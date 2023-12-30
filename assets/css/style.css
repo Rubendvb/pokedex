@@ -145,7 +145,7 @@ img {
   align-items: center;
   width: 100%;
   justify-content: center;
-  margin-top: 1rem;
+  padding: 1rem 0;
 }
 
 .pagination button {
@@ -155,6 +155,7 @@ img {
   border: none;
   background-color: #6c79db;
   border-radius: 1rem;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 992px) {

@@ -26,13 +26,12 @@ export async function getPokemons(offset = 0, limit = 5) {
 
 function convertPokemonDetailClass(pokeDetail) {
   const pokemon = new Pokemon()
+  pokemon.number = pokeDetail.id
+  pokemon.name = pokeDetail.name
 
   const types = pokeDetail.types.map((item) => item.type.name)
-
   const [type] = types
 
-  pokemon.name = pokeDetail.name
-  pokemon.number = pokeDetail.id
   pokemon.types = types
   pokemon.type = type
   pokemon.photo = pokeDetail.sprites.other.dream_world.front_default

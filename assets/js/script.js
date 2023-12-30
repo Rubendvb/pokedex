@@ -2,8 +2,10 @@ import { getPokemons } from './api.js'
 
 const ol = document.querySelector('.pokemons')
 const moreButton = document.querySelector('#loadMoreButton')
+
+const maxRecords = 151
+let limit = 10
 let offset = 0
-let limit = 5
 
 function convertPokemonToLi(pokemon) {
   return `
@@ -38,7 +40,18 @@ function loadPokemonItems(offset, limit) {
 
 moreButton.addEventListener('click', () => {
   offset += limit
-  loadPokemonItems(offset, limit)
+
+  const qtdRecordNextPage = offset + limit
+
+  if (qtdRecordNextPage >= maxRecords) {
+    const newLimit = maxRecords - offset
+
+    loadPokemonItems(offset, newLimit)
+
+    moreButton.parentElement.removeChild(moreButton)
+  } else {
+    loadPokemonItems(offset, limit)
+  }
 })
 
 loadPokemonItems(offset, limit)
